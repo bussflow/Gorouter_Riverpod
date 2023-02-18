@@ -14,6 +14,6 @@ class Student {
   }
 
   updateAge(int a) {
-    this.age = (this.age! + a)!;
+    age = (age! + a);
   }
 }
