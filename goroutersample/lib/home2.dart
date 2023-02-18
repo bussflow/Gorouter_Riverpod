@@ -22,7 +22,8 @@ class DetailsScreen extends StatelessWidget {
               child: const Text('Go back to the Home screen'),
             ),
             const MyWidget(),
-            MyWidget2()
+            MyWidget2(),
+            MyWidget3(),
           ],
         ),
       ),
