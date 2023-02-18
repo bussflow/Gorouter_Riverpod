@@ -16,7 +16,16 @@ class MyWidget extends ConsumerWidget {
       padding: const EdgeInsets.all(67.0),
       child: Center(
         child: ElevatedButton(
-          onPressed: () => ref.read(counterProvider.notifier).state++,
+          onPressed: () {
+            ref.read(counterProvider.notifier).state++;
+
+            ref.read(boolProvider.notifier).update((state) => Student(
+                "NewName" + ref.read(counterProvider.notifier).state.toString(),
+                2));
+
+            ref.read(boolProvider.notifier).update((state) =>
+                state.updateAge(ref.read(counterProvider.notifier).state));
+          },
           child: const Text('Button2 '),
         ),
       ),

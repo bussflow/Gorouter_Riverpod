@@ -14,6 +14,7 @@ class MyWidget2 extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     // ignore: prefer_const_constructors
     final count = ref.watch(counterProvider);
+    final val = ref.watch(boolProvider);
     return Padding(
       padding: EdgeInsets.all(67.0),
       child: Column(
@@ -22,7 +23,10 @@ class MyWidget2 extends ConsumerWidget {
             child: Text('$count'),
           ),
           Center(
-            child: Text('$count'),
+            child: Text('${val.name}'),
+          ),
+          Center(
+            child: Text('${val.age}'),
           ),
         ],
       ),
