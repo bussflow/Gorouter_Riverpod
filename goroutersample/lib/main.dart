@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:goroutersample/v.dart';
 import 'home2.dart';
 import 'r.dart';
 
@@ -9,8 +10,6 @@ void main() {
     const ProviderScope(child: MyApp()),
   );
 }
-
-final counterProvider = StateProvider((ref) => 0);
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -63,9 +62,16 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
-            ElevatedButton(
-              onPressed: () => context.go('/details'),
-              child: const Text('Go to the Details screen'),
+            Consumer(
+              builder: (BuildContext context, WidgetRef ref, Widget? child) {
+                return ElevatedButton(
+                  onPressed: () {
+                    ref.read(counterProvider.notifier).state++;
+                    context.go('/details');
+                  },
+                  child: const Text('Go to the Details screen'),
+                );
+              },
             ),
           ],
         ),
